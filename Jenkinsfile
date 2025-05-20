@@ -2,30 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Clonar repositorio') {
+        stage('Build') {
             steps {
+                // Clonar repo (build parte 1)
                 git branch: 'main', url: 'https://github.com/JesusSerpaArrieta/node-hello-world-ci-cd.git'
+                
+                // Construir imagen Docker (build parte 2)
+                bat 'docker build -t node-hola-mundo .'
             }
         }
 
-        stage('Instalar dependencias') {
+        stage('Test') {
             steps {
-                bat 'npm install'
+                // Ejecutar pruebas dentro del contenedor (opcional)
+                bat 'docker run --rm node-hola-mundo npm test'
             }
         }
 
-        stage('Ejecutar pruebas') {
+        stage('Deploy') {
             steps {
-                bat 'npm test'
-            }
-        }
+                // Parar y eliminar contenedor anterior si existe
+                bat 'docker stop nodoapp || echo "No hay contenedor corriendo"'
+                bat 'docker rm nodoapp || echo "No hay contenedor para eliminar"'
 
-        stage('Ejecutar aplicación') {
-            steps {
-                bat 'npm start &'
-                echo 'Aplicación iniciada en el puerto 3000.'
+                // Correr nuevo contenedor en background, exponiendo puerto 3000
+                bat 'docker run -d -p 3000:3000 --name nodoapp node-hola-mundo'
             }
         }
     }
 }
-
