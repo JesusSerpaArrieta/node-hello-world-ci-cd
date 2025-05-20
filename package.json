@@ -1,0 +1,18 @@
+{
+  "name": "hello-world-ci-cd",
+  "version": "1.0.0",
+  "description": "Ejemplo CI/CD con Jenkins, Node.js y Express",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "author": "Jesus Serpa Arrieta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
