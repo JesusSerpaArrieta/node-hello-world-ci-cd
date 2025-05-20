@@ -20,12 +20,13 @@ pipeline {
             }
         }
 
-        stage('Ejecutar aplicación') {
+        stage('Deploy a Render') {
             steps {
-                bat 'npm start &'
-                echo 'Aplicación iniciada en el puerto 3000.'
+                echo 'Haciendo deploy a Render...'
+                bat 'curl -X POST "https://api.render.com/deploy/srv-d0mdsnuuk2gs73fj4vbg?key=ZfopCASVfPk"'
             }
         }
     }
 }
+
 
