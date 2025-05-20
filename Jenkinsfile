@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clonar repositorio') {
             steps {
-                git 'https://github.com/JesusSerpaArrieta/node-hello-world-ci-cd.git'
+                git branch: 'main', url: 'https://github.com/JesusSerpaArrieta/node-hello-world-ci-cd.git'
             }
         }
 
@@ -28,3 +28,4 @@ pipeline {
         }
     }
 }
+
