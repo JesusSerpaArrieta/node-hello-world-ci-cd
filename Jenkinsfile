@@ -23,7 +23,7 @@ pipeline {
         stage('Ejecutar aplicación') {
             steps {
                 bat 'npm start &'
-                echo 'Aplicación iniciada en el puerto 3000.'
+                echo 'Aplicación iniciada en el puerto 7000.'
             }
         }
     }
