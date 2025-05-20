@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clonar repositorio') {
             steps {
-                git 'https://github.com/JesusSerpaArrieta/node-ci-cd-jenkins.git'
+                git 'https://github.com/JesusSerpaArrieta/node-hello-world-ci-cd.git'
             }
         }
 
